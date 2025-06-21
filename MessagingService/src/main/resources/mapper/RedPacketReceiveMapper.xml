@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orion.messagingService.mapper.RedPacketReceiveMapper">
+
+    <resultMap id="BaseResultMap" type="com.orion.messagingService.model.RedPacketReceive">
+        <id property="redPacketReceiveId" column="red_packet_receive_id" jdbcType="BIGINT"/>
+        <result property="redPacketId" column="red_packet_id" jdbcType="BIGINT"/>
+        <result property="receiverId" column="receiver_id" jdbcType="BIGINT"/>
+        <result property="amount" column="amount" jdbcType="DECIMAL"/>
+        <result property="receivedAt" column="received_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        red_packet_receive_id,
+        red_packet_id,
+        receiver_id,
+        amount,
+       received_at
+    </sql>
+    <select id="selectByRedPacketId" resultType="com.orion.messagingService.model.RedPacketReceive">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM red_packet_receive
+        WHERE red_packet_id = #{redPacketId, jdbcType=BIGINT}
+        <if test="pageSize != null and pageSize > 0">
+            LIMIT
+            #{pageSize}
+            <if test="pageNum != null and pageNum >= 0">
+                OFFSET #{pageNum}
+            </if>
+        </if>
+    </select>
+</mapper>

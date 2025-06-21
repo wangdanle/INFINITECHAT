@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: RealTimeCommunicationService
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:18375
+  redis:
+    host: localhost
+    database: 0
+    port: 59000
+    password: e65K4t8w2
+    # 配置 Redis 连接池
+    lettuce:
+      pool:
+        min-idle: 4
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
+netty:
+  port: 8088
+  name: NettyServer
+  boss:
+    threads: 1
+  worker:
+    threads: 0
