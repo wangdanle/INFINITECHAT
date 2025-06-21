@@ -7,7 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>InfiniteChat</name>
     <description>千言</description>
-    <packaging>pom</packaging>
+    <packaging>pom</packaging>sdasd
 
     <modules>
         <module>AuthenticationService</module>
